@@ -7,8 +7,13 @@ from basket.models import *
 # admin.site.register(Couch)
 # admin.site.register(Match)
 
+@admin.register(Team)
+class TeamAdmin(admin.ModelAdmin):
+    pass
+    # list_display = ( 'logo' )
+    # list_filter = ( 'name' )
 
-#example
-# @admin.register(Album)
-# class AlbumAdmin(admin.ModelAdmin):
-#     list_display = ( 'name' , 'release_date' , 'id')
+@admin.register(Player)
+class PlayerAdmin(admin.ModelAdmin):
+    list_filter_horizontal = ('birthdate', 'team') # no funciona 
+    # list_filter = ( 'name', 'nickname', 'rut')

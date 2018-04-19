@@ -29,7 +29,7 @@ class Player(models.Model):
                     ),
             default='BA'
             )
-
+    team = models.ForeignKey(Team, on_delete=models.CASCADE)
 class Couch(models.Model):
     name = models.CharField(max_length=100)
     nickname = models.CharField(max_length=100)
