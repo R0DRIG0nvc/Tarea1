@@ -29,8 +29,8 @@ class PlayerAdmin(admin.ModelAdmin):
 
 @admin.register(Couch)
 class CouchAdmin(admin.ModelAdmin):
-    pass
+    list_display = ('name',)
 
 @admin.register(Match)
 class MatchAdmin(admin.ModelAdmin):
-    pass
+    list_display = ('name',)

@@ -9,9 +9,6 @@ class Team(models.Model):
     logo = models.ImageField()
     code = models.CharField(max_length=20)
 
-    def __str__(self):
-        return "%s" , self.name
-
 class Player(models.Model):
     name = models.CharField(max_length=100)
     nickname = models.CharField(max_length=100)
@@ -35,9 +32,6 @@ class Player(models.Model):
             )
     team = models.ForeignKey(Team, on_delete=models.CASCADE)
 
-    def __str__(self):
-        return "%s" , self.name
-
 class Couch(models.Model):
     name = models.CharField(max_length=100)
     nickname = models.CharField(max_length=100)
@@ -45,10 +39,5 @@ class Couch(models.Model):
     rut = models.CharField(max_length=10)
     email = models.EmailField(max_length=100)
 
-    def __str__(self):
-        return "%s" , self.name
-
 class Match(models.Model):
     name = models.CharField(max_length=100)
-    # team1 = models.ForeignKey(Team, on_delete=models.CASCADE)
-    # team2 = models.ForeignKey(Team, on_delete=models.CASCADE)
