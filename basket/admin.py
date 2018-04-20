@@ -9,11 +9,28 @@ from basket.models import *
 
 @admin.register(Team)
 class TeamAdmin(admin.ModelAdmin):
-    pass
-    # list_display = ( 'logo' )
-    # list_filter = ( 'name' )
+    list_display = ( 'name' , 'thumb' )
+    search_fields = ('name', )
+    def thumb(self, obj):
+        return mark_safe("<img src='%s' width='40' height='40' >" % obj.logo.url)
+    thumb.allow_tags = True
+    thumb._name_ = 'Logo'
+
 
 @admin.register(Player)
 class PlayerAdmin(admin.ModelAdmin):
-    list_filter_horizontal = ('birthdate', 'team') # no funciona 
-    # list_filter = ( 'name', 'nickname', 'rut')
+    search_fields = ('name', 'nickname', 'rut')
+    list_display = ( 'name' , 'thumb' , 'nickname')
+    list_filter = ('name', 'birthdate')
+    def thumb(self, obj):
+        return mark_safe("<img src='%s' width='40' height='40' >" % obj.photo.url)
+    thumb.allow_tags = True
+    thumb._name_ = 'photo'
+
+@admin.register(Couch)
+class CouchAdmin(admin.ModelAdmin):
+    pass
+
+@admin.register(Match)
+class MatchAdmin(admin.ModelAdmin):
+    pass
