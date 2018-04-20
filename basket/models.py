@@ -1,4 +1,5 @@
 from django.db import models
+from django.utils.safestring import mark_safe
 
 # Create your models here.
 
@@ -29,6 +30,7 @@ class Player(models.Model):
                     ),
             default='BA'
             )
+    team = models.ForeignKey(Team, on_delete=models.CASCADE)
 
 class Couch(models.Model):
     name = models.CharField(max_length=100)
